@@ -1,4 +1,4 @@
 replicas: 2
-nameSuffix: '2'
+nameSuffix: '1'
 syncwave: '1'
 fail: true

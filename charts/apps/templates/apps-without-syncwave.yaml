@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app1
+  name: app1-wo-syncwave
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "10"
@@ -27,7 +27,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app2
+  name: app2-wo-syncwave
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "20"
@@ -53,7 +53,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app3
+  name: app3-wo-syncwave
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "30"

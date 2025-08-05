@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: app1
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
 spec:
   project: default
   destination:
@@ -11,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/keenbytes/test-repo.git
     targetRevision: main
-    path: charts/nginx
+    path: charts/nginx-without-syncwave
     helm:
       valueFiles:
       - values1.yaml
@@ -26,6 +28,8 @@ kind: Application
 metadata:
   name: app2
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
 spec:
   project: default
   destination:
@@ -34,7 +38,7 @@ spec:
   source:
     repoURL: https://github.com/keenbytes/test-repo.git
     targetRevision: main
-    path: charts/nginx
+    path: charts/nginx-without-syncwave
     helm:
       valueFiles:
       - values2.yaml
@@ -49,6 +53,8 @@ kind: Application
 metadata:
   name: app3
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
 spec:
   project: default
   destination:
@@ -57,7 +63,7 @@ spec:
   source:
     repoURL: https://github.com/keenbytes/test-repo.git
     targetRevision: main
-    path: charts/nginx
+    path: charts/nginx-without-syncwave
     helm:
       valueFiles:
       - values3.yaml

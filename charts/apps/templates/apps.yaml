@@ -4,9 +4,7 @@ metadata:
   name: app1
   namespace: argocd
   annotations:
-    argocd.proj.io/hook: Sync
-    argocd.proj.io/hook-delete-policy: HookSucceeded
-    argocd.proj.io/sync-wave: "1"
+    argocd.proj.io/sync-wave: "10"
 spec:
   project: default
   destination:
@@ -31,9 +29,7 @@ metadata:
   name: app2
   namespace: argocd
   annotations:
-    argocd.proj.io/hook: Sync
-    argocd.proj.io/hook-delete-policy: HookSucceeded
-    argocd.proj.io/sync-wave: "2"
+    argocd.proj.io/sync-wave: "20"
 spec:
   project: default
   destination:
@@ -58,9 +54,7 @@ metadata:
   name: app3
   namespace: argocd
   annotations:
-    argocd.proj.io/hook: Sync
-    argocd.proj.io/hook-delete-policy: HookSucceeded
-    argocd.proj.io/sync-wave: "3"
+    argocd.proj.io/sync-wave: "30"
 spec:
   project: default
   destination:

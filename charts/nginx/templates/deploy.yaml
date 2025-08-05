@@ -1,7 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-dep-{{ .Values.nameSuffix }}
+  name: nginx-dep-{{ .Values.nameSuffix }}-1
+  annotations:
+    argocd.proj.io/sync-wave: "11"
   labels:
     app: nginx
 spec:
@@ -23,4 +25,59 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 80
-
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-dep-{{ .Values.nameSuffix }}-2
+  annotations:
+    argocd.proj.io/sync-wave: "12"
+  labels:
+    app: nginx
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      initContainers:
+      - name: sleep
+        image: busybox:1.28
+        command: ['sh', '-c', 'echo Sleeping && sleep 30']
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-dep-{{ .Values.nameSuffix }}-3
+  annotations:
+    argocd.proj.io/sync-wave: "13"
+  labels:
+    app: nginx
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      initContainers:
+      - name: sleep
+        image: busybox:1.28
+        command: ['sh', '-c', 'echo Sleeping && sleep 30']
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80

@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/keenbytes/test-repo.git
     targetRevision: main
-    path: charts/nginx-without-syncwave
+    path: charts/nginx
     helm:
       valueFiles:
       - values1.yaml
@@ -38,7 +38,7 @@ spec:
   source:
     repoURL: https://github.com/keenbytes/test-repo.git
     targetRevision: main
-    path: charts/nginx-without-syncwave
+    path: charts/nginx
     helm:
       valueFiles:
       - values2.yaml
@@ -63,7 +63,7 @@ spec:
   source:
     repoURL: https://github.com/keenbytes/test-repo.git
     targetRevision: main
-    path: charts/nginx-without-syncwave
+    path: charts/nginx
     helm:
       valueFiles:
       - values3.yaml

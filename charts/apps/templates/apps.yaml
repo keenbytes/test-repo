@@ -1,0 +1,77 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app1
+  namespace: argocd
+  annotations:
+    argocd.proj.io/sync-wave: "1"
+spec:
+  project: default
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/keenbytes/test-repo.git
+    targetRevision: main
+    path: charts/apps
+    helm:
+      valueFiles:
+      - values1.yaml
+  syncPolicy:
+    automated:
+      enable: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app2
+  namespace: argocd
+  annotations:
+    argocd.proj.io/sync-wave: "2"
+spec:
+  project: default
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/keenbytes/test-repo.git
+    targetRevision: main
+    path: charts/apps
+    helm:
+      valueFiles:
+      - values2.yaml
+  syncPolicy:
+    automated:
+      enable: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app3
+  namespace: argocd
+  annotations:
+    argocd.proj.io/sync-wave: "3"
+spec:
+  project: default
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/keenbytes/test-repo.git
+    targetRevision: main
+    path: charts/apps
+    helm:
+      valueFiles:
+      - values3.yaml
+  syncPolicy:
+    automated:
+      enable: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true

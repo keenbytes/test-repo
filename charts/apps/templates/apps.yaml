@@ -19,7 +19,6 @@ spec:
       - values1.yaml
   syncPolicy:
     automated:
-      enable: true
       prune: true
     syncOptions:
     - CreateNamespace=true
@@ -45,7 +44,6 @@ spec:
       - values2.yaml
   syncPolicy:
     automated:
-      enable: true
       prune: true
     syncOptions:
     - CreateNamespace=true
@@ -71,7 +69,6 @@ spec:
       - values3.yaml
   syncPolicy:
     automated:
-      enable: true
       prune: true
     syncOptions:
     - CreateNamespace=true

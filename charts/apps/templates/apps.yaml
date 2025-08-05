@@ -3,8 +3,6 @@ kind: Application
 metadata:
   name: app1
   namespace: argocd
-  annotations:
-    argocd.proj.io/sync-wave: "10"
 spec:
   project: default
   destination:
@@ -28,8 +26,6 @@ kind: Application
 metadata:
   name: app2
   namespace: argocd
-  annotations:
-    argocd.proj.io/sync-wave: "20"
 spec:
   project: default
   destination:
@@ -53,8 +49,6 @@ kind: Application
 metadata:
   name: app3
   namespace: argocd
-  annotations:
-    argocd.proj.io/sync-wave: "30"
 spec:
   project: default
   destination:

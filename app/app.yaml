@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nginx-dep-1
   annotations:
-    argocd.proj.io/sync-wave: "11"
+    argocd.argoproj.io/sync-wave: "11"
   labels:
     app: nginx
 spec:
@@ -31,7 +31,7 @@ kind: Deployment
 metadata:
   name: nginx-dep-2
   annotations:
-    argocd.proj.io/sync-wave: "12"
+    argocd.argoproj.io/sync-wave: "12"
   labels:
     app: nginx
 spec:
@@ -59,7 +59,7 @@ kind: Deployment
 metadata:
   name: nginx-dep-3
   annotations:
-    argocd.proj.io/sync-wave: "13"
+    argocd.argoproj.io/sync-wave: "13"
   labels:
     app: nginx
 spec:

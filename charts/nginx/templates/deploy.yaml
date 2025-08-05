@@ -4,6 +4,8 @@ metadata:
   name: nginx-dep-{{ .Values.nameSuffix }}
   labels:
     app: nginx
+  annotations:
+    argocd.proj.io/sync-wave: "{{ .Values.syncwave }}"
 spec:
   replicas: {{ .Values.replicas }}
   selector:

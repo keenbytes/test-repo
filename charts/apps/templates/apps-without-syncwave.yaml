@@ -1,0 +1,77 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app1
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+spec:
+  project: default
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/keenbytes/test-repo.git
+    targetRevision: main
+    path: charts/nginx-without-syncwave
+    helm:
+      valuesObject:
+        replicas: 2
+        nameSuffix: 'wsw1'
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app2
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
+spec:
+  project: default
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/keenbytes/test-repo.git
+    targetRevision: main
+    path: charts/nginx-without-syncwave
+    helm:
+      valuesObject:
+        replicas: 2
+        nameSuffix: 'wsw2'
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app3
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  project: default
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/keenbytes/test-repo.git
+    targetRevision: main
+    path: charts/nginx-without-syncwave
+    helm:
+      valuesObject:
+        replicas: 2
+        nameSuffix: 'wsw3'
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - CreateNamespace=true

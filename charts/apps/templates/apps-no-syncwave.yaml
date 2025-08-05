@@ -1,0 +1,74 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app1-no-syncwave
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/keenbytes/test-repo.git
+    targetRevision: main
+    path: charts/nginx
+    helm:
+      valuesObject:
+        replicas: 3
+        nameSuffix: 'nsw1'
+        syncwave: '3'
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app2-no-syncwave
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/keenbytes/test-repo.git
+    targetRevision: main
+    path: charts/nginx
+    helm:
+      valuesObject:
+        replicas: 3
+        nameSuffix: 'nsw2'
+        syncwave: '2'
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app3-no-syncwave
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/keenbytes/test-repo.git
+    targetRevision: main
+    path: charts/nginx
+    helm:
+      valuesObject:
+        replicas: 3
+        nameSuffix: 'nsw3'
+        syncwave: '1'
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - CreateNamespace=true

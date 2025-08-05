@@ -28,8 +28,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-dep-{{ .Values.nameSuffix }}-2
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
   labels:
     app: nginx
 spec:
@@ -56,8 +54,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-dep-{{ .Values.nameSuffix }}-3
-  annotations:
-    argocd.argoproj.io/sync-wave: "3"
   labels:
     app: nginx
 spec:

@@ -2,7 +2,7 @@
 name: Release‑Please (googleapis/action)
 
 on:
-  push:
+  pull_request:
     branches:
       - main                # run on pushes to the default branch
   workflow_dispatch:        # optional: allow manual runs

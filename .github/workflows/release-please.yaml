@@ -32,7 +32,7 @@ jobs:
           # The branch where the release PR will be created/updated
           release-type: simple
           target-branch: main
-
+          skip-github-pull-request: true
       - name: echo
         run: |
           echo "${{ steps.release_please.outputs.version }}"

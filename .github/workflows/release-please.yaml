@@ -1,0 +1,39 @@
+# .github/workflows/release-please.yml
+name: Release‑Please (googleapis/action)
+
+on:
+  pull_request:
+    branches:
+      - main                # run on pushes to the default branch
+  workflow_dispatch:        # optional: allow manual runs
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write        # needed for tags/releases
+      pull-requests: write   # needed to open/update PRs
+
+    steps:
+      # -------------------------------------------------
+      # 1️⃣ Check out the repository (full history required)
+      # -------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0      # release‑please needs the entire commit log
+
+      # -------------------------------------------------
+      # 2️⃣ Run the official release‑please GitHub Action
+      # -------------------------------------------------
+      - name: Release‑Please
+        id: release_please
+        uses: googleapis/release-please-action@v4
+        with:
+          # The branch where the release PR will be created/updated
+          release-type: simple
+          target-branch: main
+
+      - name: echo
+        run: |
+          echo "${{ steps.release_please.outputs.version }}"

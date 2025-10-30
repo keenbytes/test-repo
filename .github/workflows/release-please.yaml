@@ -41,4 +41,4 @@ jobs:
       - name: docker run
         shell: bash
         run: |
-          npx -y release-please release-pr --token="${ github.token }" --repo-url="keenbytes/test-repo" --target-branch="main" --release-type=simple --dry-run
+          npx -y release-please release-pr --token="${{ github.token }}" --repo-url="keenbytes/test-repo" --target-branch="main" --release-type=simple --dry-run

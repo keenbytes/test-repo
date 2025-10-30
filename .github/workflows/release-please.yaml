@@ -3,6 +3,7 @@ name: Release‑Please (googleapis/action)
 
 on:
   push:
+    branches:
     - main                # run on pushes to the default branch
 
 jobs:

@@ -33,6 +33,12 @@ jobs:
           release-type: simple
           target-branch: main
           skip-github-pull-request: true
+
       - name: echo
         run: |
           echo "${{ steps.release_please.outputs.version }}"
+
+      - name: docker run
+        shell: bash
+        run: |
+          npx -y release-please release-pr --token="${GITHUB_TOKEN}" --repo-url="keenbytes/test-repo" --target-branch="main" --release-type=simple --dry-run
